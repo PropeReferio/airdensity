@@ -4,7 +4,10 @@
       delay in retrieving JSON from the API. Once weather has a value, this
       div is displayed.-->
       <div class="webflow-style-input">
-        <input type="text" (blur)="applyFilter($event.target.value)" placeholder="Enter Zip Code">
+        <input type="text" 
+        (blur)="applyFilter($event.target.value)" 
+        (keyup.enter)="applyFilter($event.target.value)" 
+        placeholder="Enter Zip Code">
       </div>
   
       <div *ngIf="!(hasError$ | async); else showError">

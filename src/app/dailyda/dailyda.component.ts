@@ -35,13 +35,11 @@ export class DailydaComponent implements OnInit {
   ngOnInit() {
 
     this.weatherdataService.getWeather().subscribe((data: any) => {
-      console.log(data);
       this.hasError$ = of(false);
       this.weather = data;
       this.name = data.name;
       this.temp = this.weather.main.temp;
       this.press = this.weather.main.pressure;
-      console.log(this.ISAT / 0.0065 * (1 - ((this.press / this.ISAP) / (this.temp / this.ISAT)) ** (this.expon)));
       this.dry_da = Math.round(3.28084 * this.ISAT / 0.0065 * (1 - ((this.press / this.ISAP) / (this.temp / this.ISAT)) ** (this.expon)));
     }
     );
@@ -52,9 +50,9 @@ export class DailydaComponent implements OnInit {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
-        tap((term) => console.warn(`Zip Code to search: ${term}`)),
-        filter((term) => !!term),
-        switchMap((term) => this.weatherdataService.getWeatherByZipCode(term)),
+        tap((term) => console.warn(`Zip Code to search: ${term}`)), //probably for debugging
+        filter((term) => !!term), // !!term returns term's truthiness value. filter works like python, so empty lists, strings, 0 are dropped.
+        switchMap((term) => this.weatherdataService.getWeatherByZipCode(term)), //basically, this only keeps the latest data/JSON, after possibly receiving multiple
         filter((result) => !!result),
         catchError((err) => {
           this.hasError$ = of(true);
@@ -69,7 +67,6 @@ export class DailydaComponent implements OnInit {
           this.name = result.name;
           this.temp = this.weather.main.temp;
           this.press = this.weather.main.pressure;
-          console.log(this.ISAT / 0.0065 * (1 - ((this.press / this.ISAP) / (this.temp / this.ISAT)) ** (this.expon)));
           this.dry_da = Math.round(3.28084 * this.ISAT / 0.0065 * (1 - ((this.press / this.ISAP) / (this.temp / this.ISAT)) ** (this.expon)));
         }
       });
