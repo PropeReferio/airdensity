@@ -1,13 +1,24 @@
 <div class="row">
-    <div class="weather-card col-xs-8 offset-xs-2 col-sm-8 offset-sm-2" *ngIf = "weather"> <!-- *ngIf prevents errors, because of the 
-    delay in retrieving JSON from the API. Once weather has a value, this 
-    div is displayed.-->
-        <h1>Chicago Weather</h1>
+    <div class="weather-card col-xs-8 offset-xs-2 col-sm-8 offset-sm-2" *ngIf="weather">
+      <!-- *ngIf prevents errors, because of the
+      delay in retrieving JSON from the API. Once weather has a value, this
+      div is displayed.-->
+      <div class="webflow-style-input">
+        <input type="text" (blur)="applyFilter($event.target.value)" placeholder="Enter Zip Code">
+      </div>
+  
+      <div *ngIf="!(hasError$ | async); else showError">
+        <h1>{{ name }}</h1>
         <h4> Density Altitude (assumes dry air): </h4>
         <h2><strong>{{ dry_da }} ft</strong></h2>
         <h4> Temp in Kelvins: </h4>
         <h2><strong>{{ temp }}</strong></h2>
         <h4> Static Atmospheric Pressure in hPa: </h4>
         <h2><strong>{{ press }}</strong></h2>
+      </div>
+  
+      <ng-template #showError>
+        Failed to obtain data.
+      </ng-template>
     </div>
-</div>
+  </div>

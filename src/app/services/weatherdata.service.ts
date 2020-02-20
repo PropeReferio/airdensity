@@ -12,6 +12,10 @@ export class WeatherdataService {
   public getWeather(){
     return this.httpClient.get(`https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=${this.API_KEY}`);
   }
+
+  public getWeatherByZipCode(zipCode: string){
+    return this.httpClient.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${this.API_KEY}`);
+  }
 }
 
 
