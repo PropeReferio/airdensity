@@ -13,6 +13,8 @@ import { WeatherdataService } from '../services/weatherdata.service';
 export class DailydaComponent implements OnInit {
   weather;
   temp;
+  cels;
+  fahr;
   press;
   dry_da;
   name: string;
@@ -39,6 +41,8 @@ export class DailydaComponent implements OnInit {
       this.weather = data;
       this.name = data.name;
       this.temp = this.weather.main.temp;
+      this.cels = Math.round(this.temp - 273.15);
+      this.fahr = Math.round(this.cels * 1.8 + 32);
       this.press = this.weather.main.pressure;
       this.dry_da = Math.round(3.28084 * this.ISAT / 0.0065 * (1 - ((this.press / this.ISAP) / (this.temp / this.ISAT)) ** (this.expon)));
     }
@@ -66,6 +70,8 @@ export class DailydaComponent implements OnInit {
           this.weather = result;
           this.name = result.name;
           this.temp = this.weather.main.temp;
+          this.cels = Math.round(this.temp - 273.15);
+          this.fahr = Math.round(this.cels * 1.8 + 32);
           this.press = this.weather.main.pressure;
           this.dry_da = Math.round(3.28084 * this.ISAT / 0.0065 * (1 - ((this.press / this.ISAP) / (this.temp / this.ISAT)) ** (this.expon)));
         }
