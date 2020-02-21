@@ -15,3 +15,12 @@ app.get('/*', function(req,res){
 })
 
 console.log('Console listening on port 8090');
+
+var j = schedule.scheduleJob({hour: 09, minute: 00}, function(){
+    //Create DB stuff here for all DZs
+});
+
+//You'll need to adjust these for different time zones
+var j = schedule.scheduleJob({hour: 14, minute: 00}, function(){
+    //Create DB stuff here for all DZs
+});
