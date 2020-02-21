@@ -4,7 +4,7 @@ import { of, Observable } from 'rxjs';
 import { filter, debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
 
 import { WeatherdataService } from '../services/weatherdata.service';
-
+import { SkydiveMidwestService } from '../services/skydive-midwest.service';
 @Component({
   selector: 'app-dailyda',
   templateUrl: './dailyda.component.html',
@@ -32,6 +32,7 @@ export class DailydaComponent implements OnInit {
 
   constructor(
     private weatherdataService: WeatherdataService,
+    private skydiveMidwestService: SkydiveMidwestService,
   ) { }
 
   ngOnInit() {
