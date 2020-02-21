@@ -35,6 +35,9 @@ export class DailydaComponent implements OnInit {
     private skydiveMidwestService: SkydiveMidwestService,
   ) { }
 
+  // Timer to run database creation at 9:00 AM and 2:00 PM
+  
+
   ngOnInit() {
 
     this.weatherdataService.getWeather().subscribe((data: any) => {
