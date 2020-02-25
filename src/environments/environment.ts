@@ -5,14 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyASSpuYEknrn-paHI8vl9AngFvHUSKfnzE",
-    authDomain: "density-altitude.firebaseapp.com",
-    databaseURL: "https://density-altitude.firebaseio.com",
-    projectId: "density-altitude",
-    storageBucket: "density-altitude.appspot.com",
-    messagingSenderId: "250537718369",
-    appId: "1:250537718369:web:8b9ae346446b10e913f020",
-    measurementId: "G-R14T1WD3EE"
+    // API Credentials go here!
   }
 };
 
