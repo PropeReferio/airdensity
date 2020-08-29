@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class WeatherdataService {
-//   API_KEY = 'a641de02f55d14465d55e5fd6edb7506';
   API_KEY = process.env.API_KEY;
 
   constructor(private httpClient: HttpClient) { }
